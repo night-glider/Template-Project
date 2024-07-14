@@ -1,0 +1,18 @@
+keys,en,ru,fr
+TEST_KEY,test,тест,test
+START_GAME,Start,Начать,Commencer
+SETTINGS,Settings,Настройки,Paramètres
+QUIT,Quit,Выйти,Quitter
+MOUSE_SENS,Mouse sensitivity,Чувствительность мыши,Sensibilité de la souris
+MUSIC,Music,Музыка,Musique
+SOUNDS,Sounds,звуки,Des sons
+FULLSCREEN,Fullscreen,Полноэкранный режим,Plein écran
+CANCEL,Cancel,Отмена,Annuler
+APPLY,Apply,Применить,Appliquer
+LANGUAGE,Language,Язык,Langue
+ENGLISH,English,English,English
+RUSSIAN,Русский,Русский,Русский
+FRENCH,Français,Français,Français
+CONTINUE,Continue,Продолжить,Continuer
+TEMPLATE_PROJECT,TEMPLATE PROJECT,ШАБЛОННЫЙ ПРОЕКТ,PROJET DE MODÈLE
+HEIGHT,Height,Высота,Hauteur

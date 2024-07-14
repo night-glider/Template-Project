@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://x6j2xua6i0ln"]
+
+[ext_resource type="Script" path="res://scenes/menu/PauseMenu.gd" id="1_q6ig2"]
+[ext_resource type="PackedScene" uid="uid://ual0y7x6u3s7" path="res://scenes/menu/SettingsControl.tscn" id="1_v3chk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ln0me"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87i4j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14ekr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_slnd2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i0csl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ykyq1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cfyee"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vdm6"]
+
+[sub_resource type="Theme" id="Theme_3gwud"]
+default_font_size = 24
+Button/styles/disabled = SubResource("StyleBoxEmpty_ln0me")
+Button/styles/hover = SubResource("StyleBoxEmpty_87i4j")
+Button/styles/normal = SubResource("StyleBoxEmpty_14ekr")
+Button/styles/pressed = SubResource("StyleBoxEmpty_slnd2")
+MenuBar/styles/disabled = SubResource("StyleBoxEmpty_i0csl")
+MenuBar/styles/hover = SubResource("StyleBoxEmpty_ykyq1")
+MenuBar/styles/normal = SubResource("StyleBoxEmpty_cfyee")
+MenuBar/styles/pressed = SubResource("StyleBoxEmpty_6vdm6")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3gwud")
+script = ExtResource("1_q6ig2")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -38.5
+offset_right = 108.0
+offset_bottom = 62.5
+grow_vertical = 2
+
+[node name="continue" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "CONTINUE"
+alignment = 0
+
+[node name="settings" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+alignment = 0
+
+[node name="quit" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+alignment = 0
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+layout_mode = 0
+
+[node name="settings" parent="PauseMenu" instance=ExtResource("1_v3chk")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.5
+offset_top = -67.5
+offset_bottom = 83.5
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/continue" to="PauseMenu" method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/settings" to="PauseMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/quit" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="resized" from="PauseMenu/settings" to="PauseMenu" method="_on_settings_resized"]
+[connection signal="visibility_changed" from="PauseMenu/settings" to="PauseMenu" method="_on_settings_visibility_changed"]

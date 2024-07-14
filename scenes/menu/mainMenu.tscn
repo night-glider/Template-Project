@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://b3v2fqdopv1xy"]
+
+[ext_resource type="Script" path="res://scenes/menu/mainMenu.gd" id="1_k2nd0"]
+[ext_resource type="PackedScene" uid="uid://ual0y7x6u3s7" path="res://scenes/menu/SettingsControl.tscn" id="3_4rumb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ln0me"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87i4j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14ekr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_slnd2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i0csl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ykyq1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cfyee"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vdm6"]
+
+[sub_resource type="Theme" id="Theme_ep77p"]
+default_font_size = 24
+Button/styles/disabled = SubResource("StyleBoxEmpty_ln0me")
+Button/styles/hover = SubResource("StyleBoxEmpty_87i4j")
+Button/styles/normal = SubResource("StyleBoxEmpty_14ekr")
+Button/styles/pressed = SubResource("StyleBoxEmpty_slnd2")
+MenuBar/styles/disabled = SubResource("StyleBoxEmpty_i0csl")
+MenuBar/styles/hover = SubResource("StyleBoxEmpty_ykyq1")
+MenuBar/styles/normal = SubResource("StyleBoxEmpty_cfyee")
+MenuBar/styles/pressed = SubResource("StyleBoxEmpty_6vdm6")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ep77p")
+script = ExtResource("1_k2nd0")
+
+[node name="title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.5
+offset_top = 20.0
+offset_right = 208.5
+offset_bottom = 65.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "TEMPLATE_PROJECT"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+grow_vertical = 2
+
+[node name="startTutorial" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "START_GAME"
+alignment = 0
+
+[node name="settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+alignment = 0
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+alignment = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+
+[node name="settings" parent="." instance=ExtResource("3_4rumb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.5
+
+[connection signal="pressed" from="VBoxContainer/startTutorial" to="." method="_on_start_tutorial_pressed"]
+[connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="resized" from="settings" to="." method="_on_settings_resized"]
+[connection signal="visibility_changed" from="settings" to="." method="_on_settings_visibility_changed"]

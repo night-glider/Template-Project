@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://llq78cqy2s7h"]
+
+[ext_resource type="Script" path="res://scenes/playground/3DSlider.gd" id="1_bb81d"]
+
+[sub_resource type="SystemFont" id="SystemFont_jorvt"]
+subpixel_positioning = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1oia"]
+
+[node name="3dSlider" type="Node3D"]
+script = ExtResource("1_bb81d")
+label = "Label"
+
+[node name="value" type="Label3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.173205, 0.1, 0, -0.1, 0.173205, 0, 0, 0)
+double_sided = false
+text = "1"
+font = SubResource("SystemFont_jorvt")
+font_size = 128
+outline_size = 32
+justification_flags = 0
+
+[node name="label" type="Label3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.173205, 0.1, 0, -0.1, 0.173205, 0, 0.105478, -0.063779)
+double_sided = false
+text = "Label"
+font = SubResource("SystemFont_jorvt")
+font_size = 128
+outline_size = 32
+justification_flags = 0
+
+[node name="up" type="Label3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.173205, 0.1, 0, -0.1, 0.173205, 0.2, 0, 0)
+double_sided = false
+text = ">"
+font = SubResource("SystemFont_jorvt")
+font_size = 128
+outline_size = 32
+justification_flags = 0
+
+[node name="upHitBox" type="Area3D" parent="up"]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="up/upHitBox"]
+shape = SubResource("BoxShape3D_n1oia")
+
+[node name="down" type="Label3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.173205, 0.1, 0, -0.1, 0.173205, -0.2, 0, 0)
+double_sided = false
+text = "<"
+font = SubResource("SystemFont_jorvt")
+font_size = 128
+outline_size = 32
+justification_flags = 0
+
+[node name="downHitBox" type="Area3D" parent="down"]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="down/downHitBox"]
+shape = SubResource("BoxShape3D_n1oia")
+
+[connection signal="area_entered" from="up/upHitBox" to="." method="_on_up_hit_box_area_entered"]
+[connection signal="area_exited" from="up/upHitBox" to="." method="_on_up_hit_box_area_exited"]
+[connection signal="area_entered" from="down/downHitBox" to="." method="_on_down_hit_box_area_entered"]
+[connection signal="area_exited" from="down/downHitBox" to="." method="_on_down_hit_box_area_exited"]

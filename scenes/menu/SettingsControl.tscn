@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://ual0y7x6u3s7"]
+
+[ext_resource type="Script" path="res://scenes/menu/SettingsControl.gd" id="1_cmle6"]
+
+[node name="SettingsControl" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+script = ExtResource("1_cmle6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "MOUSE_SENS"
+
+[node name="MouseSens" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.01
+max_value = 0.5
+step = 0.01
+value = 0.1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "MUSIC"
+
+[node name="music" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+text = "SOUNDS"
+
+[node name="sounds" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 2
+text = "FULLSCREEN"
+
+[node name="fullscreen" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 2
+text = "LANGUAGE"
+
+[node name="language" type="OptionButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+item_count = 3
+popup/item_0/text = "ENGLISH"
+popup/item_0/id = 0
+popup/item_1/text = "RUSSIAN"
+popup/item_1/id = 1
+popup/item_2/text = "FRENCH"
+popup/item_2/id = 2
+
+[node name="cancel" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "CANCEL"
+
+[node name="apply" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "APPLY"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[connection signal="value_changed" from="MouseSens" to="." method="_on_mouse_sens_value_changed"]
+[connection signal="value_changed" from="music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="sounds" to="." method="_on_sounds_value_changed"]
+[connection signal="toggled" from="fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="item_selected" from="language" to="." method="_on_language_item_selected"]
+[connection signal="pressed" from="cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="apply" to="." method="_on_apply_pressed"]
